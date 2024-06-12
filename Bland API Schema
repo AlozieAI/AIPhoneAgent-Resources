@@ -1,0 +1,107 @@
+Phone Agent OpenAPI Schema
+
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Alozie API",
+    "version": "1.0.0",
+    "description": "API for Phone Agent"
+  },
+  "servers": [
+    {
+      "url": "https://alozie-api.fastgenapp.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/bland": {
+      "post": {
+        "summary": "Submit caller information",
+        "operationId": "submitCallerInfo",
+        "requestBody": {
+          "description": "Caller information",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone_number": {
+                    "type": "string",
+                    "description": "Phone number of the caller"
+                  },
+                  "caller_name": {
+                    "type": "string",
+                    "description": "Name of the caller"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Email address of the caller"
+                  }
+                },
+                "required": ["phone_number", "caller_name", "email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates if the operation was successful"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Detailed message of the operation"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
+
