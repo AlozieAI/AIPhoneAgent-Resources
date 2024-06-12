@@ -1,0 +1,76 @@
+
+Can you take the transcript sent to you by the user and organize each answer given by the lead, matching it with the corresponding question asked by our AI Assistant? Additionally, create an analysis or explanation of what they said, ensuring that no details are left out. While also adding a section will you take look at the script and see if the lead qualifies or not and assign the Qualify section with a yes or no. You can tell if the lead qualifies if their budget aligns with cost of our services or not.  
+
+ The output will be used by the Airtable API, so please format it accordingly and return only a message with the JSON object but without any extra text before or after it. Meaning i dont want to see anything like this ```json { . Try to Follow the format example below exactly:
+
+
+
+
+{
+  "records": [
+    {
+      "fields": {
+        "Name": "<Lead's Name>",
+       “Email” : “<Lead’s Email>”
+        "Q1:Business Info": "<Analysis/Explanation of Answer to Question 1>",
+        "Q2:Pain Points": "<Analysis/Explanation of Answer to Question 2>",
+        "Q3:AI Solution": "<Analysis/Explanation of Answer to Question 3>",
+        "Q4:Pricing": "<Analysis/Explanation of Answer to Question 4>"
+     “Qualify”: “<Yes or no if the lead qualifies for our services”
+  “MeetingTime”: “<The time  and date the meeting is scheduled>”
+   “Transcript” : “<Add the whole call log or transcript in here”
+      }
+    }
+  ]
+}
+Here’s the mapping of questions to Airtable columns, along with the requirement to provide an analysis or explanation:
+
+
+Question 1: "What business field are you in, what role do you have, and what services does your business provide?"
+Airtable Column: Q1:Business Info
+Requirement: Provide a detailed analysis or explanation of the lead's business field, their role, and the services their business provides.
+
+
+Question 2: "What is the biggest pain point you believe AI can solve for your business?"
+Airtable Column: Q2:Pain Points
+Requirement: Provide a thorough analysis or explanation of the lead's biggest pain point that AI can solve.
+
+
+Question 3: "Can you explain the type of AI Agent you want to build?"
+Airtable Column: Q3:AI Solution
+Requirement: Provide a comprehensive analysis or explanation of the type of AI Agent the lead wants to build.
+
+
+Question 4: "What is your budget for this project?"
+Airtable Column: Q4:Pricing
+Requirement: Provide an analysis or explanation of the lead's budget for the project.
+
+
+Ensure that the "Name" field contains the name of the customer or lead answering the questions. Only return the JSON object without any additional text before or after it.
+
+
+To follow this exact format:
+
+
+
+
+{
+  "records": [
+    {
+      "fields": {
+        "Name": "Alozie Igbokwe",
+    `    “Email” : “alozie2k@gmail.com”
+        "Q1:Business Info": "The customer is the CTO of an ecommerce business that specializes in drop shipping. They use Shopify to create their website and also provide customer support, though they have a small team and struggle to scale as their customer base grows.",
+        "Q2:Pain Points": "The customer's biggest pain point that they believe AI can solve is the challenge of managing and scaling their customer support operations. As a small business, they have limited resources for customer support, making it difficult to keep up with growing customer inquiries.",
+        "Q3:AI Solution": "The customer is interested in building an AI agent that can integrate with their Shopify platform and their customer support system, Fresh Off the Cloud. The key functionalities they require are:\n1. Natural language processing to understand customer inquiries\n2. Access to real-time inventory data to provide accurate product information\n3. The ability to generate automated responses to common customer questions",
+        "Q4:Pricing": "The customer has a budget of $5,000 for this AI agent project, which the AI Assistant found to be a reasonable amount to develop the required capabilities."
+    “ Qualify”: “Yes” 
+     “MeetingTime : “Jan 12th 12:30 pm”
+      “Transcript” : “Robert: Hi {{Caller's Name}}, my name is Robert, and I’m an AI Virtual Assistant at AbritrageAI. We specialize in building and selling AI Agents to companies. I have a few questions to better understand your business needs which we will need to be recorded to better prepare for our meeting. Is fine with you?
+Lead: Sure, go ahead.
+Robert: What business field are you in, what role do you have, and what services does your business provide…….”    
+      }
+    }
+  ]
+}
+
